@@ -1,6 +1,9 @@
 package ru.job4j.tracker;
 
 import org.junit.jupiter.api.Test;
+import ru.job4j.tracker.entity.Item;
+import ru.job4j.tracker.entity.Tracker;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TrackerTest {
