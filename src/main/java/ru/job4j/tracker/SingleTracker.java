@@ -3,6 +3,8 @@ package ru.job4j.tracker;
 import ru.job4j.tracker.entity.Item;
 import ru.job4j.tracker.entity.Tracker;
 
+import java.util.Collection;
+
 public final class SingleTracker {
     private Tracker tracker = new Tracker();
 
@@ -26,11 +28,11 @@ public final class SingleTracker {
         return tracker.findById(id);
     }
 
-    public Item[] findAll() {
+    public Collection<Item> findAll() {
         return tracker.findAll();
     }
 
-    public Item[] findByName(String key) {
+    public Collection<Item> findByName(String key) {
         return tracker.findByName(key);
     }
 
