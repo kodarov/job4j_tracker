@@ -63,7 +63,7 @@ public class AnalyzeByMap {
             labels.add(label);
         }
         labels.sort(Comparator.naturalOrder());
-        return labels.getLast();
+        return labels.get(labels.size() - 1);
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
@@ -74,6 +74,6 @@ public class AnalyzeByMap {
             labels.add(label);
         }
         labels.sort(Comparator.naturalOrder());
-        return labels.getLast();
+        return labels.get(labels.size() - 1);
     }
 }
