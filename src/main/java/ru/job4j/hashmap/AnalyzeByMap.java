@@ -16,27 +16,16 @@ public class AnalyzeByMap {
         return subjectMap;
     }
 
-    private static Label getLabelMinScore(List<Label> labels) {
-        double min = Double.MAX_VALUE;
+    private static Label getLabelMaxScore(List<Label> labels) {
+        double max = Double.MIN_VALUE;
         Label label = null;
         for (Label value : labels) {
-            if (value.score() < min) {
-                min = value.score();
+            if (value.score() > max) {
+                max = value.score();
                 label = value;
             }
         }
         return label;
-    }
-
-    private static List<Label> sortLabel(List<Label> labels) {
-        List<Label> sortList = new ArrayList<>();
-        int size = labels.size();
-        for (int i = 0; i < size; i++) {
-            Label label = getLabelMinScore(labels);
-            sortList.add(label);
-            labels.remove(label);
-        }
-        return sortList;
     }
 
     public static double averageScore(List<Pupil> pupils) {
@@ -84,8 +73,7 @@ public class AnalyzeByMap {
             Label label = new Label(pupil.name(), sum);
             labels.add(label);
         }
-        labels = sortLabel(labels);
-        return labels.get(labels.size() - 1);
+        return getLabelMaxScore(labels);
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
@@ -95,7 +83,6 @@ public class AnalyzeByMap {
             Label label = new Label(name, subjectMap.get(name));
             labels.add(label);
         }
-        labels = sortLabel(labels);
-        return labels.get(labels.size() - 1);
+        return getLabelMaxScore(labels);
     }
 }
