@@ -1,20 +1,42 @@
 package ru.job4j.hashmap;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AnalyzeByMap {
     private static Map<String, Integer> getSubjectMap(List<Pupil> pupils) {
         Map<String, Integer> subjectMap = new HashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                if (subjectMap.containsKey(subject.name())) {
-                    subjectMap.put(subject.name(), subject.score() + subjectMap.get(subject.name()));
-                } else {
-                    subjectMap.put(subject.name(), subject.score());
-                }
+                subjectMap.put(subject.name(), subject.score() + subjectMap.getOrDefault(subject.name(), 0));
             }
         }
         return subjectMap;
+    }
+
+    private static Label getLabelMinScore(List<Label> labels) {
+        double min = Double.MAX_VALUE;
+        Label label = null;
+        for (Label value : labels) {
+            if (value.score() < min) {
+                min = value.score();
+                label = value;
+            }
+        }
+        return label;
+    }
+
+    private static List<Label> sortLabel(List<Label> labels) {
+        List<Label> sortList = new ArrayList<>();
+        int size = labels.size();
+        for (int i = 0; i < size; i++) {
+            Label label = getLabelMinScore(labels);
+            sortList.add(label);
+            labels.remove(label);
+        }
+        return sortList;
     }
 
     public static double averageScore(List<Pupil> pupils) {
@@ -62,7 +84,7 @@ public class AnalyzeByMap {
             Label label = new Label(pupil.name(), sum);
             labels.add(label);
         }
-        labels.sort(Comparator.naturalOrder());
+        labels = sortLabel(labels);
         return labels.get(labels.size() - 1);
     }
 
@@ -73,7 +95,7 @@ public class AnalyzeByMap {
             Label label = new Label(name, subjectMap.get(name));
             labels.add(label);
         }
-        labels.sort(Comparator.naturalOrder());
+        labels = sortLabel(labels);
         return labels.get(labels.size() - 1);
     }
 }
