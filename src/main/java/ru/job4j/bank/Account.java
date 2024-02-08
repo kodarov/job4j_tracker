@@ -2,8 +2,25 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Сущность банковского счета
+ *
+ * @author Salavat Kodarov
+ * @version 1.0
+ */
 public class Account {
+    /**
+     * Реквизита счета.
+     * Реквизит уникален и является идентификатором счета.
+     *
+     * @since ver.1.0
+     */
     private String requisite;
+    /**
+     * Баланс счета
+     *
+     * @since ver.1.0
+     */
     private double balance;
 
     public Account(String requisite, double balance) {

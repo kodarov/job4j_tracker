@@ -2,8 +2,21 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Сущность пользователя банковской системы
+ *
+ * @author Salavat Kodarov
+ * @version 1.0
+ */
 public class User {
+    /**
+     * Серия и номер паспорта.
+     * Является идентификатором пользователя.
+     */
     private String passport;
+    /**
+     * Логин пользователя
+     */
     private String username;
 
     public User(String passport, String username) {
