@@ -28,3 +28,4 @@ hs_err_pid*
 target
 out
 /src/main/java/ru/job4j/mytest/
+/src/main/java/ru/job4j/function/Main.java
