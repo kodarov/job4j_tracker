@@ -10,7 +10,7 @@ public class AnalyzeByMap {
         Map<String, Integer> subjectMap = new HashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                subjectMap.put(subject.name(), subject.score() + subjectMap.getOrDefault(subject.name(), 0));
+                subjectMap.merge(subject.name(), subject.score(), (oldValue, newValue) -> oldValue + subject.score());
             }
         }
         return subjectMap;
