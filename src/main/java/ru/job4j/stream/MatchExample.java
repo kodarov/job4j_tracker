@@ -10,7 +10,6 @@ public class MatchExample {
                 .stream()
                 .noneMatch("Шесть"::contains);
         System.out.println(result);
-
         anyM();
         allM();
     }
